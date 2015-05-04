@@ -1,0 +1,16 @@
+<resources>
+	<string name="app_name">Calisthenico</string>
+	<string name="hello_world">Hello world!</string>
+
+	<!-- Menu actions -->
+	<string name="action_settings">Settings</string>
+
+	<!-- Hints -->
+	<string name="hint_routine_title">Routine title</string>
+	<string name="hint_routine_cycles">Number of cycles</string>
+	<string name="hint_rest_between_exercises">Rest time between exercises</string>
+	<string name="hint_rest_between_cycles">Rest time between cycles</string>
+
+	<!-- Activities -->
+	<string name="title_activity_routine_create">RoutineCreateActivity</string>
+</resources>
