@@ -1,0 +1,165 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context="com.lkunic.apps.calisthenico.activities.RoutineViewerActivity">
+
+	<LinearLayout
+		android:id="@+id/container"
+		android:layout_width="match_parent"
+		android:layout_height="86dp"
+		android:orientation="horizontal"
+		android:paddingBottom="@dimen/activity_inner_padding">
+
+		<RelativeLayout
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:padding="@dimen/activity_outer_padding">
+
+				<ImageView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="3"
+					android:contentDescription="@string/label_cycles"
+					android:src="@drawable/ic_cycles"/>
+
+				<com.lkunic.libs.apptoolbox.views.FontTextView
+					android:id="@+id/txt_cycles"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="2"
+					android:textSize="@dimen/abc_text_size_medium_material"
+					app:font="bold.ttf"/>
+
+			</LinearLayout>
+
+			<com.lkunic.libs.apptoolbox.views.FontTextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:gravity="center_horizontal"
+				android:text="@string/label_cycles"
+				android:textColor="@color/text_secondary"
+				app:font="italic.ttf"/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+
+				android:padding="@dimen/activity_outer_padding">
+
+				<ImageView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="3"
+					android:contentDescription="@string/label_rest_cycles"
+					android:src="@drawable/ic_rest_cycles"/>
+
+				<com.lkunic.libs.apptoolbox.views.FontTextView
+					android:id="@+id/txt_rest_cycles"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="2"
+					android:textSize="@dimen/abc_text_size_medium_material"
+					app:font="bold.ttf"/>
+
+			</LinearLayout>
+
+			<com.lkunic.libs.apptoolbox.views.FontTextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:gravity="center_horizontal"
+				android:text="@string/label_rest_cycles"
+				android:textColor="@color/text_secondary"
+				app:font="italic.ttf"/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:padding="@dimen/activity_outer_padding">
+
+				<ImageView
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="3"
+					android:contentDescription="@string/label_rest_exercises"
+					android:src="@drawable/ic_rest_exercises"/>
+
+				<com.lkunic.libs.apptoolbox.views.FontTextView
+					android:id="@+id/txt_rest_exercises"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="2"
+					android:textSize="@dimen/abc_text_size_medium_material"
+					app:font="bold.ttf"/>
+
+			</LinearLayout>
+
+			<com.lkunic.libs.apptoolbox.views.FontTextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:gravity="center_horizontal"
+				android:text="@string/label_rest_exercises"
+				android:textColor="@color/text_secondary"
+				app:font="italic.ttf"/>
+
+		</RelativeLayout>
+
+	</LinearLayout>
+
+	<View
+		android:layout_below="@id/container"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="@color/divider"/>
+
+	<ListView
+		android:layout_below="@+id/container"
+		android:id="@id/lv_exercises"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	<com.melnykov.fab.FloatingActionButton
+		android:id="@+id/btn_start_routine"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_margin="@dimen/activity_outer_padding"
+		android:src="@drawable/ic_action_play"
+		app:fab_colorNormal="@color/app_theme_accent"
+		app:fab_colorPressed="@color/app_theme_accent_dark"/>
+
+
+</RelativeLayout>

@@ -18,14 +18,23 @@ import java.util.List;
  */
 public class ExerciseListAdapter extends ArrayAdapter<Exercise>
 {
-	/**
-	 * Constructor
-	 * @param context The current context.
-	 * @param objects The objects to represent in the ListView.
-	 */
-	public ExerciseListAdapter(Context context, List<Exercise> objects)
+	private int layoutResId;
+	private boolean alternateRowBackground;
+
+	public ExerciseListAdapter(Context context, List<Exercise> exercises)
 	{
-		super(context, R.layout.row_exercise, objects);
+		super(context, R.layout.row_add_exercise, exercises);
+
+		layoutResId = R.layout.row_add_exercise;
+		alternateRowBackground = false;
+	}
+
+	public ExerciseListAdapter(Context context, Exercise[] exercises)
+	{
+		super(context, R.layout.row_view_exercise, exercises);
+
+		layoutResId = R.layout.row_view_exercise;
+		alternateRowBackground = true;
 	}
 
 	@Override
@@ -36,7 +45,7 @@ public class ExerciseListAdapter extends ArrayAdapter<Exercise>
 		if (convertView == null)
 		{
 			LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(R.layout.row_exercise, parent, false);
+			convertView = inflater.inflate(layoutResId, parent, false);
 
 			holder = new ViewHolder();
 			holder.txtExerciseTitle = (TextView) convertView.findViewById(R.id.txt_exercise_title);
@@ -55,6 +64,13 @@ public class ExerciseListAdapter extends ArrayAdapter<Exercise>
 		holder.txtReps.setText(exercise.isTimed ?
 			String.format("%ds", exercise.reps) :
 			String.valueOf(exercise.reps));
+
+		if (alternateRowBackground)
+		{
+			convertView.setBackgroundColor(position % 2 == 0 ?
+				getContext().getResources().getColor(R.color.list_background_1) :
+				getContext().getResources().getColor(R.color.list_background_2));
+		}
 
 		return convertView;
 	}

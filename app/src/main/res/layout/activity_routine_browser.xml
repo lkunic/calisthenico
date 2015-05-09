@@ -1,6 +1,5 @@
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
@@ -11,29 +10,27 @@
 		android:layout_width="match_parent"
 		android:layout_height="@dimen/list_header_height">
 
-		<com.lkunic.libs.apptoolbox.views.FontTextView
+		<ImageView
 			android:id="@+id/label_cycles"
 			android:layout_width="@dimen/routine_list_data_column_width"
 			android:layout_height="wrap_content"
 			android:layout_alignParentBottom="true"
 			android:layout_alignParentRight="true"
 			android:layout_alignParentTop="true"
-			android:gravity="center"
-			android:text="@string/label_cycles"
-			android:textAllCaps="true"
-			app:font="bold.ttf"/>
+			android:contentDescription="@string/label_cycles"
+			android:scaleType="center"
+			android:src="@drawable/ic_cycles"/>
 
-		<com.lkunic.libs.apptoolbox.views.FontTextView
+		<ImageView
 			android:id="@+id/label_exercises"
 			android:layout_width="@dimen/routine_list_data_column_width"
 			android:layout_height="wrap_content"
 			android:layout_alignParentBottom="true"
 			android:layout_alignParentTop="true"
 			android:layout_toLeftOf="@+id/label_cycles"
-			android:gravity="center"
-			android:text="@string/label_exercises"
-			android:textAllCaps="true"
-			app:font="bold.ttf"/>
+			android:contentDescription="@string/label_exercises"
+			android:scaleType="center"
+			android:src="@drawable/ic_exercises"/>
 
 	</RelativeLayout>
 

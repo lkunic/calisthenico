@@ -1,5 +1,6 @@
 package com.lkunic.apps.calisthenico.activities;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.lkunic.apps.calisthenico.R;
 import com.lkunic.apps.calisthenico.adapters.RoutineListAdapter;
@@ -69,7 +69,10 @@ public class RoutineBrowserActivity extends AppCompatActivity
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
-				Toast.makeText(getBaseContext(), "Routine clicked - " + mRoutines.get(position).id, Toast.LENGTH_SHORT).show();
+				Intent i = new Intent(getBaseContext(), RoutineViewerActivity.class);
+				i.putExtra(RoutineViewerActivity.ARG_ROUTINE_ID, mRoutines.get(position).id);
+
+				startActivity(i);
 			}
 		});
 

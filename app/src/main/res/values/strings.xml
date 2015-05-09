@@ -34,4 +34,5 @@
 	<!-- Activities -->
 	<string name="title_activity_routine_create">Create Routine</string>
 	<string name="title_activity_routine_browser">Routines</string>
+	<string name="title_activity_routine_viewer">Routine Viewer</string>
 </resources>
