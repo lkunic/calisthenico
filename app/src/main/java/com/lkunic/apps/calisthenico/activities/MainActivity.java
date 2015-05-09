@@ -1,13 +1,14 @@
 package com.lkunic.apps.calisthenico.activities;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.lkunic.apps.calisthenico.R;
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
 {
 
 	@Override
@@ -36,6 +37,14 @@ public class MainActivity extends ActionBarActivity
 		//noinspection SimplifiableIfStatement
 		if (id == R.id.action_settings)
 		{
+			return true;
+		}
+
+		if (id == R.id.action_create_routine)
+		{
+			Intent i = new Intent(this, RoutineCreateActivity.class);
+			startActivity(i);
+
 			return true;
 		}
 

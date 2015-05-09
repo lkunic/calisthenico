@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			  android:orientation="vertical"
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent">
+
+	<EditText
+		android:id="@+id/et_exercise_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/dialog_button_bar_margin"
+		android:layout_marginLeft="@dimen/dialog_content_padding"
+		android:layout_marginRight="@dimen/dialog_content_padding"
+		android:layout_marginTop="@dimen/dialog_content_padding"
+		android:hint="@string/hint_exercise_title"
+		android:inputType="text"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<EditText
+			android:id="@+id/et_reps"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/dialog_button_bar_margin"
+			android:layout_marginLeft="@dimen/dialog_content_padding"
+			android:layout_marginRight="@dimen/dialog_content_padding"
+			android:hint="@string/hint_exercise_reps"
+			android:inputType="number"/>
+
+		<CheckBox
+			android:id="@+id/cb_is_timed"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/label_is_timed"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		style="@style/dialog_button_bar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<Button
+			android:id="@+id/btn_cancel"
+			style="@style/dialog_button"
+			android:layout_width="wrap_content"
+			android:layout_height="@dimen/button_height"
+			android:text="@string/button_cancel"/>
+
+		<Button
+			android:id="@+id/btn_done"
+			style="@style/dialog_button_accent"
+			android:layout_width="wrap_content"
+			android:layout_height="@dimen/button_height"
+			android:text="@string/button_done"/>
+	</LinearLayout>
+
+</LinearLayout>

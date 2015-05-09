@@ -1,16 +1,34 @@
 <resources>
-	<string name="app_name">Calisthenico</string>
+	<string name="app_name"> </string>
 	<string name="hello_world">Hello world!</string>
 
 	<!-- Menu actions -->
 	<string name="action_settings">Settings</string>
+	<string name="action_done">Done</string>
+
+	<!-- Dialogs -->
+	<string name="dialog_cycles">Number of cycles</string>
+	<string name="dialog_rest_between_cycles">Rest between cycles</string>
+	<string name="dialog_rest_between_exercises">Rest between exercises</string>
+	<string name="dialog_add_exercise">Add exercise</string>
 
 	<!-- Hints -->
 	<string name="hint_routine_title">Routine title</string>
-	<string name="hint_routine_cycles">Number of cycles</string>
-	<string name="hint_rest_between_exercises">Rest time between exercises</string>
-	<string name="hint_rest_between_cycles">Rest time between cycles</string>
+	<string name="hint_cycles">Number of cycles</string>
+	<string name="hint_rest_between_exercises">Rest between exercises (secs)</string>
+	<string name="hint_rest_between_cycles">Rest between cycles (secs)</string>
+	<string name="hint_exercise_title">Exercise title</string>
+	<string name="hint_exercise_reps">Rep count</string>
+
+	<!-- Labels -->
+	<string name="label_cycles">Cycles</string>
+	<string name="label_rest_cycles">Between cycles</string>
+	<string name="label_rest_exercises">Between exercises</string>
+	<string name="label_is_timed">Is timed</string>
+
+	<!-- Descriptions -->
+	<string name="description_grabber">List sorting handle</string>
 
 	<!-- Activities -->
-	<string name="title_activity_routine_create">RoutineCreateActivity</string>
+	<string name="title_activity_routine_create">Create Routine</string>
 </resources>

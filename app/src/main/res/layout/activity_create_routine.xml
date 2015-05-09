@@ -1,38 +1,101 @@
-<LinearLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:paddingBottom="@dimen/activity_vertical_margin"
-	android:paddingLeft="@dimen/activity_horizontal_margin"
-	android:paddingRight="@dimen/activity_horizontal_margin"
-	android:paddingTop="@dimen/activity_vertical_margin"
 	tools:context="com.lkunic.apps.calisthenico.activities.RoutineCreateActivity">
 
-	<EditText
-		android:id="@+id/et_title"
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="@string/hint_routine_title"/>
+		android:layout_height="match_parent"
+		android:focusable="true"
+		android:focusableInTouchMode="true"
+		android:orientation="vertical">
 
-	<EditText
-		android:id="@+id/et_cycles"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="@string/hint_routine_cycles"
-		android:inputType="number"/>
-	<EditText
-		android:id="@+id/et_rest_between_exercises"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="@string/hint_rest_between_exercises"
-		android:inputType="number"/>
-	<EditText
-		android:id="@+id/et_rest_between_cycles"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:hint="@string/hint_rest_between_cycles"
-		android:inputType="number"/>
+		<EditText
+			android:id="@+id/et_title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/activity_inner_padding"
+			android:layout_marginLeft="@dimen/activity_horizontal_margin"
+			android:layout_marginRight="@dimen/activity_horizontal_margin"
+			android:layout_marginTop="@dimen/activity_vertical_margin"
+			android:hint="@string/hint_routine_title"/>
 
-</LinearLayout>
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/divider"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<com.lkunic.libs.apptoolbox.views.TextButton
+				android:id="@+id/tb_cycles"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				app:secondary_text="@string/label_cycles"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/divider"/>
+
+			<com.lkunic.libs.apptoolbox.views.TextButton
+				android:id="@+id/tb_rest_cycles"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				app:secondary_text="@string/label_rest_cycles"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/divider"/>
+
+			<com.lkunic.libs.apptoolbox.views.TextButton
+				android:id="@+id/tb_rest_exercises"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				app:secondary_text="@string/label_rest_exercises"/>
+		</LinearLayout>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@color/divider"/>
+
+		<com.lkunic.libs.apptoolbox.views.SortableListView
+			android:id="@+id/lv_exercises"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:animateLayoutChanges="true"
+			android:divider="@color/divider"
+			android:dividerHeight="1dp"
+			app:drag_background="@android:color/white"
+			app:expanded_height="@dimen/list_item_row_extended_height"
+			app:grabber="@+id/grabber"
+			app:normal_height="@dimen/list_item_row_height"
+			app:remove_mode="slideRight"/>
+
+	</LinearLayout>
+
+	<com.melnykov.fab.FloatingActionButton
+		android:id="@+id/btn_add_exercise"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_margin="@dimen/activity_outer_padding"
+		android:src="@drawable/ic_action_new"
+		app:fab_colorNormal="@color/app_theme_accent"
+		app:fab_colorPressed="@color/app_theme_accent_dark"/>
+
+
+</RelativeLayout>

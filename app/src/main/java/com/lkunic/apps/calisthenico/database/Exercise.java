@@ -12,6 +12,11 @@ public class Exercise
 	public int reps;
 	public boolean isTimed;
 
+	public Exercise()
+	{
+		this(null, 0, false);
+	}
+
 	public Exercise(String title, int reps, boolean isTimed)
 	{
 		this.title = title;
@@ -30,7 +35,7 @@ public class Exercise
 
 		title = split[0];
 		reps = Integer.parseInt(split[1]);
-		isTimed = split[2] == "1";
+		isTimed = split[2].equals("1");
 	}
 
 	@Override
