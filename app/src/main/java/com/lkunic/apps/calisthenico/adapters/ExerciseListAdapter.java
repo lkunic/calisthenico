@@ -61,7 +61,7 @@ public class ExerciseListAdapter extends ArrayAdapter<Exercise>
 
 	private class ViewHolder
 	{
-		TextView txtExerciseTitle;
-		TextView txtReps;
+		public TextView txtExerciseTitle;
+		public TextView txtReps;
 	}
 }

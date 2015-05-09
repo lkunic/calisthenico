@@ -60,7 +60,7 @@ public class EditExerciseDialog extends BaseDialog<Exercise>
 		if (mExercise != null)
 		{
 			etExerciseTitle.setText(mExercise.title);
-			etExerciseReps.setText(String.valueOf(mExercise.reps));
+			etExerciseReps.setText(mExercise.reps != 0 ? String.valueOf(mExercise.reps) : null);
 			cbIsTimed.setChecked(mExercise.isTimed);
 		}
 

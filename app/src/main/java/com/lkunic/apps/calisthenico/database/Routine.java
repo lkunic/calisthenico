@@ -19,6 +19,7 @@ public class Routine implements IQueryable
 	public long id;
 	public String title;
 	public int cycles;
+	public int exerciseCount;
 	public Exercise[] exercises;
 	public int restBetweenExercises;
 	public int restBetweenCycles;
@@ -49,6 +50,11 @@ public class Routine implements IQueryable
 		if (exercises != null && exercises.length != 0)
 		{
 			values.put(RoutineTable.EXERCISES, exercisesToString());
+			values.put(RoutineTable.EXERCISE_COUNT, exercises.length);
+		}
+		else if (exerciseCount != -1)
+		{
+			values.put(RoutineTable.EXERCISE_COUNT, exerciseCount);
 		}
 
 		if (restBetweenCycles != -1)

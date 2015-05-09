@@ -5,4 +5,5 @@
 
 	<!-- Layout dimens -->
 	<dimen name="exercise_rep_width">72dp</dimen>
+	<dimen name="routine_list_data_column_width">72dp</dimen>
 </resources>

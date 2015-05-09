@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name"> </string>
+	<string name="app_name">Calisthenico</string>
 	<string name="hello_world">Hello world!</string>
 
 	<!-- Menu actions -->
@@ -21,14 +21,17 @@
 	<string name="hint_exercise_reps">Rep count</string>
 
 	<!-- Labels -->
+	<string name="label_exercises">Exercises</string>
 	<string name="label_cycles">Cycles</string>
 	<string name="label_rest_cycles">Between cycles</string>
 	<string name="label_rest_exercises">Between exercises</string>
 	<string name="label_is_timed">Is timed</string>
+	<string name="label_saved_routines">Saved routines</string>
 
 	<!-- Descriptions -->
 	<string name="description_grabber">List sorting handle</string>
 
 	<!-- Activities -->
 	<string name="title_activity_routine_create">Create Routine</string>
+	<string name="title_activity_routine_browser">Routines</string>
 </resources>

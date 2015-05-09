@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lkunic.apps.calisthenico.activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.RoutineBrowserActivity"
+            android:label="@string/title_activity_routine_browser"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lkunic.apps.calisthenico.activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

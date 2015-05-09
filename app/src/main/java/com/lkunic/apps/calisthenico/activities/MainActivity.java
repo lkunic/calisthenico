@@ -48,6 +48,14 @@ public class MainActivity extends AppCompatActivity
 			return true;
 		}
 
+		if (id == R.id.action_browse_routines)
+		{
+			Intent i = new Intent(this, RoutineBrowserActivity.class);
+			startActivity(i);
+
+			return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 }
