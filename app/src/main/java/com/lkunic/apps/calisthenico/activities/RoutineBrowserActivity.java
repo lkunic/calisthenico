@@ -72,10 +72,19 @@ public class RoutineBrowserActivity extends AppCompatActivity
 				Intent i = new Intent(getBaseContext(), RoutineViewerActivity.class);
 				i.putExtra(RoutineViewerActivity.ARG_ROUTINE_ID, mRoutines.get(position).id);
 
-				startActivity(i);
+				startActivityForResult(i, 0);
 			}
 		});
 
+		new RoutineLoader().execute();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+
+		mRoutines.clear();
 		new RoutineLoader().execute();
 	}
 

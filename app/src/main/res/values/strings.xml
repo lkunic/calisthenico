@@ -5,6 +5,8 @@
 	<!-- Menu actions -->
 	<string name="action_settings">Settings</string>
 	<string name="action_done">Done</string>
+	<string name="action_delete">Delete</string>
+	<string name="action_edit">Edit</string>
 
 	<!-- Dialogs -->
 	<string name="dialog_cycles">Number of cycles</string>
@@ -32,7 +34,7 @@
 	<string name="description_grabber">List sorting handle</string>
 
 	<!-- Activities -->
-	<string name="title_activity_routine_create">Create Routine</string>
+	<string name="title_activity_routine_create">Routine editor</string>
 	<string name="title_activity_routine_browser">Routines</string>
 	<string name="title_activity_routine_viewer">Routine Viewer</string>
 </resources>

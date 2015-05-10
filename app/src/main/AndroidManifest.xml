@@ -25,7 +25,7 @@
         </provider>
 
         <activity
-            android:name=".activities.RoutineCreateActivity"
+            android:name=".activities.RoutineEditorActivity"
             android:label="@string/title_activity_routine_create"
             android:parentActivityName=".activities.MainActivity" >
             <meta-data

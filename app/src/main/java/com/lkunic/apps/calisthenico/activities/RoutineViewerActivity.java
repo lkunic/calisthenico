@@ -18,6 +18,10 @@ import com.lkunic.apps.calisthenico.database.Exercise;
 import com.lkunic.apps.calisthenico.database.Routine;
 import com.lkunic.apps.calisthenico.database.RoutineTable;
 import com.lkunic.libs.apptoolbox.database.DbQuery;
+import com.lkunic.libs.apptoolbox.database.DbUtil;
+import com.lkunic.libs.apptoolbox.dialogs.BaseDialog;
+import com.lkunic.libs.apptoolbox.dialogs.DeleteConfirmationDialog;
+import com.lkunic.libs.apptoolbox.dialogs.OnDialogResultListener;
 import com.melnykov.fab.FloatingActionButton;
 
 public class RoutineViewerActivity extends AppCompatActivity
@@ -62,9 +66,21 @@ public class RoutineViewerActivity extends AppCompatActivity
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings)
+		if (id == R.id.action_delete)
 		{
+			DeleteConfirmationDialog dialog = DeleteConfirmationDialog.newInstance(mRoutine.title);
+			dialog.setDialogResultListener(deleteRoutineDialogListener);
+
+			dialog.display(getSupportFragmentManager());
+			return true;
+		}
+
+		if (id == R.id.action_edit)
+		{
+			Intent i = new Intent(getBaseContext(), RoutineEditorActivity.class);
+			i.putExtra(RoutineEditorActivity.ARG_ROUTINE_ID, mRoutineId);
+			startActivityForResult(i, 0);
+
 			return true;
 		}
 
@@ -97,6 +113,43 @@ public class RoutineViewerActivity extends AppCompatActivity
 		});
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+
+		new RoutineLoader().execute(mRoutine);
+	}
+
+	// region Dialog listener
+
+	private OnDialogResultListener deleteRoutineDialogListener = new OnDialogResultListener()
+	{
+		@Override
+		public void onDialogCancelled(BaseDialog<?> dialog)
+		{
+			dialog.dismiss();
+		}
+
+		@Override
+		public void onDialogResultPositive(BaseDialog<?> dialog)
+		{
+			// Not used
+		}
+
+		@Override
+		public void onDialogResultNegative(BaseDialog<?> dialog)
+		{
+			DbUtil.delete(getContentResolver(), mRoutine);
+			dialog.dismiss();
+
+			finish();
+		}
+	};
+
+	// endregion
+
+	// region RoutineLoader
 
 	private class RoutineLoader extends AsyncTask<Routine, Void, Cursor>
 	{
@@ -136,4 +189,6 @@ public class RoutineViewerActivity extends AppCompatActivity
 			setupContent();
 		}
 	}
+
+	// endregion
 }

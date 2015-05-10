@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
 		if (id == R.id.action_create_routine)
 		{
-			Intent i = new Intent(this, RoutineCreateActivity.class);
+			Intent i = new Intent(this, RoutineEditorActivity.class);
 			startActivity(i);
 
 			return true;

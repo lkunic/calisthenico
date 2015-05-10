@@ -1,5 +1,6 @@
 package com.lkunic.apps.calisthenico.activities;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -13,7 +14,9 @@ import com.lkunic.apps.calisthenico.R;
 import com.lkunic.apps.calisthenico.adapters.ExerciseListAdapter;
 import com.lkunic.apps.calisthenico.database.Exercise;
 import com.lkunic.apps.calisthenico.database.Routine;
+import com.lkunic.apps.calisthenico.database.RoutineTable;
 import com.lkunic.apps.calisthenico.dialogs.EditExerciseDialog;
+import com.lkunic.libs.apptoolbox.database.DbQuery;
 import com.lkunic.libs.apptoolbox.database.DbUtil;
 import com.lkunic.libs.apptoolbox.dialogs.BaseDialog;
 import com.lkunic.libs.apptoolbox.dialogs.EditTextDialog;
@@ -25,8 +28,10 @@ import com.melnykov.fab.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoutineCreateActivity extends AppCompatActivity
+public class RoutineEditorActivity extends AppCompatActivity
 {
+	public static final String ARG_ROUTINE_ID = "routine_id";
+
 	private static final String DIALOG_TAG_CYCLES = "set_cycles_dialog";
 	private static final String DIALOG_TAG_REST_CYCLES = "set_rest_between_cycles_dialog";
 	private static final String DIALOG_TAG_REST_EXERCISES = "set_rest_between_exercises_dialog";
@@ -46,25 +51,34 @@ public class RoutineCreateActivity extends AppCompatActivity
 	private SortableListView mLvExercises;
 
 	private List<Exercise> mExercises;
+	private Routine mRoutine;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_routine);
+		setContentView(R.layout.activity_routine_editor);
 
 		mExercises = new ArrayList<>();
-
 		mEtRoutineTitle = (EditText) findViewById(R.id.et_title);
+
 		setupTextButtons();
 		setupExerciseList();
+
+		mRoutine = new Routine();
+		mRoutine.id = getIntent().getLongExtra(ARG_ROUTINE_ID, -1);
+
+		if (mRoutine.id != -1)
+		{
+			populateRoutineValues();
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_create_routine, menu);
+		getMenuInflater().inflate(R.menu.menu_routine_editor, menu);
 		return true;
 	}
 
@@ -77,6 +91,8 @@ public class RoutineCreateActivity extends AppCompatActivity
 		{
 			// Save the routine
 			saveRoutine();
+
+			finish();
 			return true;
 		}
 
@@ -207,6 +223,42 @@ public class RoutineCreateActivity extends AppCompatActivity
 		});
 	}
 
+	private void populateRoutineValues()
+	{
+		Cursor cursor = DbQuery.create(getContentResolver(), mRoutine.getItemUri())
+				.withColumns(RoutineTable.TITLE, RoutineTable.CYCLES, RoutineTable.EXERCISES,
+						RoutineTable.REST_BETWEEN_CYCLES, RoutineTable.REST_BETWEEN_EXERCISES)
+				.execute();
+
+		if (cursor == null || cursor.getCount() == 0)
+		{
+			// The cursor is empty
+			return;
+		}
+
+		cursor.moveToFirst();
+
+		mEtRoutineTitle.setText(cursor.getString(cursor.getColumnIndex(RoutineTable.TITLE)));
+
+		mCycles = cursor.getInt(cursor.getColumnIndex(RoutineTable.CYCLES));
+		mRestBetweenCycles = cursor.getInt(cursor.getColumnIndex(RoutineTable.REST_BETWEEN_CYCLES));
+		mRestBetweenExercises = cursor.getInt(cursor.getColumnIndex(RoutineTable.REST_BETWEEN_EXERCISES));
+
+		mTbCycles.setPrimaryText(String.valueOf(mCycles));
+		mTbRestCycles.setPrimaryText(String.valueOf(mRestBetweenCycles));
+		mTbRestExercises.setPrimaryText(String.valueOf(mRestBetweenExercises));
+
+		String[] exerciseStrings = cursor.getString(cursor.getColumnIndex(RoutineTable.EXERCISES)).split("\\|");
+		mRoutine.exercises = new Exercise[exerciseStrings.length];
+
+		for (String exerciseString : exerciseStrings)
+		{
+			mExercises.add(new Exercise(exerciseString));
+		}
+
+		notifyExerciseDataChanged();
+	}
+
 	private void reorderExercises(int from, int to)
 	{
 		mExercises.add(to, mExercises.get(from));
@@ -233,16 +285,20 @@ public class RoutineCreateActivity extends AppCompatActivity
 
 	private void saveRoutine()
 	{
-		Routine routine = new Routine();
+		mRoutine.title = mEtRoutineTitle.getText().toString();
+		mRoutine.cycles = mCycles;
+		mRoutine.restBetweenCycles = mRestBetweenCycles;
+		mRoutine.restBetweenExercises = mRestBetweenExercises;
+		mRoutine.exercises = mExercises.toArray(new Exercise[mExercises.size()]);
 
-		routine.title = mEtRoutineTitle.getText().toString();
-		routine.cycles = mCycles;
-		routine.restBetweenCycles = mRestBetweenCycles;
-		routine.restBetweenExercises = mRestBetweenExercises;
-		routine.exercises = mExercises.toArray(new Exercise[mExercises.size()]);
-
-		DbUtil.insert(getContentResolver(), routine);
-		finish();
+		if (mRoutine.id == -1)
+		{
+			DbUtil.insert(getContentResolver(), mRoutine);
+		}
+		else
+		{
+			DbUtil.update(getContentResolver(), mRoutine);
+		}
 	}
 
 	// endregion
