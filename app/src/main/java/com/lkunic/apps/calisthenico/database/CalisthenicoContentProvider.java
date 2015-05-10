@@ -3,6 +3,12 @@ package com.lkunic.apps.calisthenico.database;
 import com.lkunic.libs.apptoolbox.database.DbContentProvider;
 import com.lkunic.libs.apptoolbox.database.IQueryable;
 
+/**
+ * Copyright (c) Luka Kunic 2015 / "CalisthenicoContentProvider.java"
+ * Created by lkunic on 01/05/2015.
+ *
+ * The application database content provider.
+ */
 public class CalisthenicoContentProvider extends DbContentProvider
 {
 	private static final String DATABASE_NAME = "Calisthenico.db";

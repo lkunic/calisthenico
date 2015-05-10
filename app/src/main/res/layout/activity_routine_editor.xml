@@ -17,16 +17,10 @@
 			android:id="@+id/et_title"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginBottom="@dimen/activity_inner_padding"
 			android:layout_marginLeft="@dimen/activity_horizontal_margin"
 			android:layout_marginRight="@dimen/activity_horizontal_margin"
 			android:layout_marginTop="@dimen/activity_vertical_margin"
 			android:hint="@string/hint_routine_title"/>
-
-		<View
-			android:layout_width="match_parent"
-			android:layout_height="1dp"
-			android:background="@color/divider"/>
 
 		<LinearLayout
 			android:layout_width="match_parent"
@@ -40,22 +34,12 @@
 				android:layout_weight="1"
 				app:secondary_text="@string/label_cycles"/>
 
-			<View
-				android:layout_width="1dp"
-				android:layout_height="match_parent"
-				android:background="@color/divider"/>
-
 			<com.lkunic.libs.apptoolbox.views.TextButton
 				android:id="@+id/tb_rest_cycles"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
 				app:secondary_text="@string/label_rest_cycles"/>
-
-			<View
-				android:layout_width="1dp"
-				android:layout_height="match_parent"
-				android:background="@color/divider"/>
 
 			<com.lkunic.libs.apptoolbox.views.TextButton
 				android:id="@+id/tb_rest_exercises"
@@ -75,8 +59,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:animateLayoutChanges="true"
-			android:divider="@color/divider"
-			android:dividerHeight="1dp"
 			app:drag_background="@android:color/white"
 			app:expanded_height="@dimen/list_item_row_extended_height"
 			app:grabber="@+id/grabber"

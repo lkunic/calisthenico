@@ -36,14 +36,12 @@
 
 	<View
 		android:layout_width="match_parent"
-		android:layout_height="2dp"
+		android:layout_height="1dp"
 		android:background="@color/divider"/>
 
 	<ListView
 		android:id="@+id/lv_routines"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:divider="@color/divider"
-		android:dividerHeight="1dp"/>
+		android:layout_height="match_parent"/>
 
 </LinearLayout>

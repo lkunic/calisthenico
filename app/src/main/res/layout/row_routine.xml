@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	android:layout_width="match_parent"
-	android:layout_height="@dimen/list_header_height"
+	android:layout_height="@dimen/list_item_row_height"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -39,18 +39,7 @@
 		android:layout_toLeftOf="@+id/txt_cycles"
 		android:gravity="center"
 		android:textSize="@dimen/abc_text_size_large_material"
+		android:background="#11000000"
 		app:font="bold.ttf"/>
-
-	<View
-		android:layout_width="1dp"
-		android:layout_height="match_parent"
-		android:layout_toLeftOf="@id/txt_exercises"
-		android:background="@color/divider"/>
-
-	<View
-		android:layout_width="1dp"
-		android:layout_height="match_parent"
-		android:layout_toLeftOf="@id/txt_cycles"
-		android:background="@color/divider"/>
 
 </RelativeLayout>

@@ -33,6 +33,11 @@
 	<!-- Descriptions -->
 	<string name="description_grabber">List sorting handle</string>
 
+	<!-- Toasts -->
+	<string name="toast_empty_exercises">You didn\'t add any exercises to this routine</string>
+	<string name="toast_empty_routine_title">You didn\'t specify a title for this routine</string>
+	<string name="toast_empty_exercise_title">You didn\'t specify a title for this exercise</string>
+
 	<!-- Activities -->
 	<string name="title_activity_routine_create">Routine editor</string>
 	<string name="title_activity_routine_browser">Routines</string>

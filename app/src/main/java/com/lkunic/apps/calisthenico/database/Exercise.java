@@ -12,11 +12,20 @@ public class Exercise
 	public int reps;
 	public boolean isTimed;
 
+	/**
+	 * Creates a new Exercise object with default values.
+	 */
 	public Exercise()
 	{
 		this(null, 0, false);
 	}
 
+	/**
+	 * Creates a new Exercise object with the given values.
+	 * @param title Exercise title.
+	 * @param reps Exercise reps / time.
+	 * @param isTimed Whether the exercise is time-based.
+	 */
 	public Exercise(String title, int reps, boolean isTimed)
 	{
 		this.title = title;
@@ -24,15 +33,21 @@ public class Exercise
 		this.isTimed = isTimed;
 	}
 
+	/**
+	 * Creates a new Exercise object by parsing the given string.
+	 * @param exercise String representation of the exercise (Title;Reps;[1,0]).
+	 */
 	public Exercise(String exercise)
 	{
 		String[] split = exercise.split(";");
 
 		if (split.length != 3)
 		{
+			// The exercise string is not valid
 			throw new IllegalArgumentException("Exercise creation string is invalid: " + exercise);
 		}
 
+		// Read the values from the split string
 		title = split[0];
 		reps = Integer.parseInt(split[1]);
 		isTimed = split[2].equals("1");
@@ -41,6 +56,7 @@ public class Exercise
 	@Override
 	public String toString()
 	{
+		// Return the string representation of the exercise
 		return String.format("%s;%d;%d", title, reps, isTimed ? 1 : 0);
 	}
 }

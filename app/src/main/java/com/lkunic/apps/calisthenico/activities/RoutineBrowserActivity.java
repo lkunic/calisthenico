@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -20,9 +18,18 @@ import com.lkunic.libs.apptoolbox.database.DbQuery;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Copyright (c) Luka Kunic 2015 / "RoutineBrowserActivity.java"
+ * Created by lkunic on 08/05/2015.
+ *
+ * Activity that lists all saved routines.
+ */
 public class RoutineBrowserActivity extends AppCompatActivity
 {
+	// Reference to the list view that displays the routines
 	private ListView mLvRoutines;
+
+	// The routine list
 	private List<Routine> mRoutines;
 
 	@Override
@@ -31,52 +38,8 @@ public class RoutineBrowserActivity extends AppCompatActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_routine_browser);
 
+		// Fetch the routines from the database and setup the list
 		setupRoutineList();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_routine_browser, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-
-		//noinspection SimplifiableIfStatement
-		if (id == R.id.action_settings)
-		{
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
-
-	private void setupRoutineList()
-	{
-		mRoutines = new ArrayList<>();
-		mLvRoutines = (ListView) findViewById(R.id.lv_routines);
-		mLvRoutines.setAdapter(new RoutineListAdapter(this, mRoutines));
-		mLvRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener()
-		{
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-			{
-				Intent i = new Intent(getBaseContext(), RoutineViewerActivity.class);
-				i.putExtra(RoutineViewerActivity.ARG_ROUTINE_ID, mRoutines.get(position).id);
-
-				startActivityForResult(i, 0);
-			}
-		});
-
-		new RoutineLoader().execute();
 	}
 
 	@Override
@@ -84,15 +47,44 @@ public class RoutineBrowserActivity extends AppCompatActivity
 	{
 		super.onActivityResult(requestCode, resultCode, data);
 
+		// This method will be called after returning from a RoutineViewerActivity. We need to reload the routine list
+		// to pick up any changes that might have happened to the routine data (deleted routines, modified values...).
 		mRoutines.clear();
 		new RoutineLoader().execute();
 	}
+
+	private void setupRoutineList()
+	{
+		// Create the list that will hold routine data
+		mRoutines = new ArrayList<>();
+
+		// Configure the list view and connect it to the routine list
+		mLvRoutines = (ListView) findViewById(R.id.lv_routines);
+		mLvRoutines.setAdapter(new RoutineListAdapter(this, mRoutines));
+		mLvRoutines.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				// Start the RoutineViewerActivity for the selected routine
+				Intent i = new Intent(getBaseContext(), RoutineViewerActivity.class);
+				i.putExtra(RoutineViewerActivity.ARG_ROUTINE_ID, mRoutines.get(position).id);
+				startActivityForResult(i, 0);
+			}
+		});
+
+		// Start the routine loader that will populate the list
+		new RoutineLoader().execute();
+	}
+
+	// region RoutineLoader
 
 	private class RoutineLoader extends AsyncTask<Void, Void, Cursor>
 	{
 		@Override
 		protected Cursor doInBackground(Void... params)
 		{
+			// Query the database for all routines and order them by name
 			return DbQuery.create(getContentResolver(), Routine.URI)
 					.withColumns(RoutineTable.ID, RoutineTable.TITLE, RoutineTable.EXERCISE_COUNT, RoutineTable.CYCLES)
 					.orderBy(RoutineTable.TITLE + " ASC")
@@ -119,10 +111,14 @@ public class RoutineBrowserActivity extends AppCompatActivity
 				routine.cycles = cursor.getInt(cursor.getColumnIndex(RoutineTable.CYCLES));
 				routine.exerciseCount = cursor.getInt(cursor.getColumnIndex(RoutineTable.EXERCISE_COUNT));
 
+				// Add the routine to the list
 				mRoutines.add(routine);
 			}
 
+			// Notify the adapter that the routine list has changed so that the list view gets refreshed
 			((RoutineListAdapter)mLvRoutines.getAdapter()).notifyDataSetChanged();
 		}
 	}
+
+	// endregion
 }

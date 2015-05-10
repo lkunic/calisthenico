@@ -9,13 +9,17 @@ import com.lkunic.libs.apptoolbox.database.IQueryable;
 /**
  * Copyright (c) Luka Kunic 2015 / "Routine.java"
  * Created by lkunic on 03/05/2015.
+ *
+ * The IQueryable database model for the Routine table.
  */
 public class Routine implements IQueryable
 {
 	private static final String URI_PATH = "routines";
 
+	// Uri for this data type
 	public static final Uri URI = Uri.parse(String.format("content://%s/%s", CalisthenicoContentProvider.AUTHORITY, URI_PATH));
 
+	// Values for the routine
 	public long id;
 	public String title;
 	public int cycles;
@@ -24,9 +28,12 @@ public class Routine implements IQueryable
 	public int restBetweenExercises;
 	public int restBetweenCycles;
 
+	/**
+	 * Creates a new Routine object with the default values.
+	 */
 	public Routine()
 	{
-		cycles = restBetweenCycles = restBetweenExercises = -1;
+		cycles = restBetweenCycles = restBetweenExercises = exerciseCount = -1;
 	}
 
 	/**
