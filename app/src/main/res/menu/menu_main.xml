@@ -5,11 +5,6 @@
 	tools:context=".MainActivity">
 
 	<item
-		android:id="@+id/action_create_routine"
-		android:title="@string/title_activity_routine_create"
-		app:showAsAction="never"/>
-
-	<item
 		android:id="@+id/action_browse_routines"
 		android:title="@string/title_activity_routine_browser"
 		app:showAsAction="never"/>

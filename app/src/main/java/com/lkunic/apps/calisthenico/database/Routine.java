@@ -6,13 +6,15 @@ import android.net.Uri;
 import com.lkunic.libs.apptoolbox.database.DatabaseTable;
 import com.lkunic.libs.apptoolbox.database.IQueryable;
 
+import java.io.Serializable;
+
 /**
  * Copyright (c) Luka Kunic 2015 / "Routine.java"
  * Created by lkunic on 03/05/2015.
  *
  * The IQueryable database model for the Routine table.
  */
-public class Routine implements IQueryable
+public class Routine implements IQueryable, Serializable
 {
 	private static final String URI_PATH = "routines";
 

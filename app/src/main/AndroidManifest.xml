@@ -1,53 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lkunic.apps.calisthenico" >
+<manifest package="com.lkunic.apps.calisthenico"
+		  xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".activities.MainActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+	<application
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name=".activities.MainActivity"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
 
-        <provider
-            android:name=".database.CalisthenicoContentProvider"
-            android:authorities="com.lkunic.apps.calisthenico.database.CalisthenicoContentProvider"
-            android:enabled="true"
-            android:exported="true" >
-        </provider>
+		<provider
+			android:name=".database.CalisthenicoContentProvider"
+			android:authorities="com.lkunic.apps.calisthenico.database.CalisthenicoContentProvider"
+			android:enabled="true"
+			android:exported="true">
+		</provider>
 
-        <activity
-            android:name=".activities.RoutineEditorActivity"
-            android:label="@string/title_activity_routine_create"
-            android:parentActivityName=".activities.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lkunic.apps.calisthenico.activities.MainActivity" />
-        </activity>
-        <activity
-            android:name=".activities.RoutineBrowserActivity"
-            android:label="@string/title_activity_routine_browser"
-            android:parentActivityName=".activities.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lkunic.apps.calisthenico.activities.MainActivity" />
-        </activity>
-        <activity
-            android:name=".activities.RoutineViewerActivity"
-            android:label="@string/title_activity_routine_viewer"
-            android:parentActivityName=".activities.RoutineBrowserActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lkunic.apps.calisthenico.activities.RoutineBrowserActivity" />
-        </activity>
-    </application>
+		<activity
+			android:name=".activities.RoutineEditorActivity"
+			android:label="@string/title_activity_routine_create"
+			android:parentActivityName=".activities.RoutineBrowserActivity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.lkunic.apps.calisthenico.activities.RoutineBrowserActivity"/>
+		</activity>
+		<activity
+			android:name=".activities.RoutineBrowserActivity"
+			android:label="@string/title_activity_routine_browser"
+			android:parentActivityName=".activities.MainActivity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.lkunic.apps.calisthenico.activities.MainActivity"/>
+		</activity>
+		<activity
+			android:name=".activities.RoutineViewerActivity"
+			android:label="@string/title_activity_routine_viewer"
+			android:parentActivityName=".activities.RoutineBrowserActivity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.lkunic.apps.calisthenico.activities.RoutineBrowserActivity"/>
+		</activity>
+		<activity
+			android:name=".activities.RoutineExecutionActivity"
+			android:label="@string/title_activity_routine_execution"
+			android:screenOrientation="portrait"
+			android:parentActivityName=".activities.RoutineBrowserActivity">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="com.lkunic.apps.calisthenico.activities.RoutineBrowserActivity"/>
+		</activity>
+	</application>
 
 </manifest>

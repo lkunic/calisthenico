@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="app_theme_primary">#40d47e</color>
-	<color name="app_theme_primary_dark">#27ae60</color>
+	<color name="app_theme_primary">#2ECC71</color>
+	<color name="app_theme_primary_dark">#26A65B</color>
 	<color name="app_theme_accent">#FF5252</color>
 	<color name="app_theme_accent_dark">#F44336</color>
 </resources>

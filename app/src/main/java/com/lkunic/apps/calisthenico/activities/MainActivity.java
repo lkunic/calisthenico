@@ -40,14 +40,6 @@ public class MainActivity extends AppCompatActivity
 			return true;
 		}
 
-		if (id == R.id.action_create_routine)
-		{
-			Intent i = new Intent(this, RoutineEditorActivity.class);
-			startActivity(i);
-
-			return true;
-		}
-
 		if (id == R.id.action_browse_routines)
 		{
 			Intent i = new Intent(this, RoutineBrowserActivity.class);

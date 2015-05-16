@@ -7,6 +7,7 @@
 	<string name="action_done">Done</string>
 	<string name="action_delete">Delete</string>
 	<string name="action_edit">Edit</string>
+	<string name="action_add_routine">Add routine</string>
 
 	<!-- Dialogs -->
 	<string name="dialog_cycles">Number of cycles</string>
@@ -29,6 +30,10 @@
 	<string name="label_rest_exercises">Between exercises</string>
 	<string name="label_is_timed">Is timed</string>
 	<string name="label_saved_routines">Saved routines</string>
+	<string name="label_rest">Rest</string>
+	<string name="label_do">Do</string>
+	<string name="label_seconds">Seconds</string>
+	<string name="label_next_exercise">Next exercise:\n%s</string>
 
 	<!-- Descriptions -->
 	<string name="description_grabber">List sorting handle</string>
@@ -36,10 +41,11 @@
 	<!-- Toasts -->
 	<string name="toast_empty_exercises">You didn\'t add any exercises to this routine</string>
 	<string name="toast_empty_routine_title">You didn\'t specify a title for this routine</string>
-	<string name="toast_empty_exercise_title">You didn\'t specify a title for this exercise</string>
+	<string name="toast_empty_exercise_name">You didn\'t specify a name for this exercise</string>
 
 	<!-- Activities -->
 	<string name="title_activity_routine_create">Routine editor</string>
 	<string name="title_activity_routine_browser">Routines</string>
 	<string name="title_activity_routine_viewer">Routine Viewer</string>
+	<string name="title_activity_routine_execution">RoutineExecutionActivity</string>
 </resources>

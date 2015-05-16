@@ -62,14 +62,14 @@ public class ExerciseEditorDialog extends BaseDialog<Exercise>
 	protected void setupContent(View view)
 	{
 		// Get view references
-		final EditText etExerciseTitle = (EditText) view.findViewById(R.id.et_exercise_title);
+		final EditText etExerciseName = (EditText) view.findViewById(R.id.et_exercise_name);
 		final EditText etExerciseReps = (EditText) view.findViewById(R.id.et_reps);
 		final CheckBox cbIsTimed = (CheckBox) view.findViewById(R.id.cb_is_timed);
 
 		if (mExercise != null)
 		{
 			// Populate the initial values for the exercise being edited
-			etExerciseTitle.setText(mExercise.title);
+			etExerciseName.setText(mExercise.name);
 			etExerciseReps.setText(mExercise.reps != 0 ? String.valueOf(mExercise.reps) : null);
 			cbIsTimed.setChecked(mExercise.isTimed);
 		}
@@ -92,16 +92,16 @@ public class ExerciseEditorDialog extends BaseDialog<Exercise>
 			@Override
 			public void onClick(View v)
 			{
-				if (etExerciseTitle.getText().toString().length() == 0)
+				if (etExerciseName.getText().toString().length() == 0)
 				{
-					// The exercise title can not be empty
+					// The exercise name can not be empty
 					Toast.makeText(getActivity(),
-							getResources().getString(R.string.toast_empty_exercise_title), Toast.LENGTH_SHORT).show();
+							getResources().getString(R.string.toast_empty_exercise_name), Toast.LENGTH_SHORT).show();
 					return;
 				}
 
 				// Read the exercise values and set the dialog result
-				mExercise.title = etExerciseTitle.getText().toString();
+				mExercise.name = etExerciseName.getText().toString();
 				mExercise.reps = Integer.parseInt(String.format("0%s", etExerciseReps.getText().toString()));
 				mExercise.isTimed = cbIsTimed.isChecked();
 

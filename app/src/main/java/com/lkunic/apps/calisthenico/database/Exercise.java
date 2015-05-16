@@ -8,7 +8,7 @@ package com.lkunic.apps.calisthenico.database;
  */
 public class Exercise
 {
-	public String title;
+	public String name;
 	public int reps;
 	public boolean isTimed;
 
@@ -22,13 +22,13 @@ public class Exercise
 
 	/**
 	 * Creates a new Exercise object with the given values.
-	 * @param title Exercise title.
+	 * @param name Exercise name.
 	 * @param reps Exercise reps / time.
 	 * @param isTimed Whether the exercise is time-based.
 	 */
-	public Exercise(String title, int reps, boolean isTimed)
+	public Exercise(String name, int reps, boolean isTimed)
 	{
-		this.title = title;
+		this.name = name;
 		this.reps = reps;
 		this.isTimed = isTimed;
 	}
@@ -48,7 +48,7 @@ public class Exercise
 		}
 
 		// Read the values from the split string
-		title = split[0];
+		name = split[0];
 		reps = Integer.parseInt(split[1]);
 		isTimed = split[2].equals("1");
 	}
@@ -57,6 +57,6 @@ public class Exercise
 	public String toString()
 	{
 		// Return the string representation of the exercise
-		return String.format("%s;%d;%d", title, reps, isTimed ? 1 : 0);
+		return String.format("%s;%d;%d", name, reps, isTimed ? 1 : 0);
 	}
 }

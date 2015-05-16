@@ -23,7 +23,7 @@
 		app:font="bold.ttf"/>
 
 	<com.lkunic.libs.apptoolbox.views.FontTextView
-		android:id="@+id/txt_exercise_title"
+		android:id="@+id/txt_exercise_name"
 		android:layout_width="wrap_content"
 		android:layout_height="match_parent"
 		android:gravity="center"

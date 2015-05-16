@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lkunic.apps.calisthenico.R;
 import com.lkunic.apps.calisthenico.adapters.ExerciseListAdapter;
@@ -106,7 +105,7 @@ public class RoutineViewerActivity extends AppCompatActivity
 	 */
 	private void setupContent()
 	{
-		// Set the activity title to the routine title
+		// Set the activity name to the routine name
 		setTitle(mRoutine.title);
 
 		// Get view references for the routine parameters
@@ -130,8 +129,9 @@ public class RoutineViewerActivity extends AppCompatActivity
 			@Override
 			public void onClick(View v)
 			{
-				// TODO implement routine execution
-				Toast.makeText(getBaseContext(), "Starting routine!", Toast.LENGTH_SHORT).show();
+				Intent i = new Intent(getBaseContext(), RoutineExecutionActivity.class);
+				i.putExtra(RoutineExecutionActivity.ARG_ROUTINE_ID, mRoutine.id);
+				startActivity(i);
 			}
 		});
 	}
@@ -198,7 +198,7 @@ public class RoutineViewerActivity extends AppCompatActivity
 
 			cursor.moveToFirst();
 
-			// Get the title from the cursor
+			// Get the name from the cursor
 			mRoutine.title = cursor.getString(cursor.getColumnIndex(RoutineTable.TITLE));
 
 			// Get the other routine parameters
@@ -208,12 +208,14 @@ public class RoutineViewerActivity extends AppCompatActivity
 
 			// Get the exercise list
 			String[] exerciseStrings = cursor.getString(cursor.getColumnIndex(RoutineTable.EXERCISES)).split("\\|");
+			mRoutine.exerciseCount = exerciseStrings.length;
 			mRoutine.exercises = new Exercise[exerciseStrings.length];
 
 			for (int i = 0, n = exerciseStrings.length; i < n; i++)
 			{
 				mRoutine.exercises[i] = new Exercise(exerciseStrings[i]);
 			}
+
 
 			// Set up the views using the loaded routine data
 			setupContent();

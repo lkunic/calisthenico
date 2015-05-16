@@ -111,7 +111,7 @@ public class RoutineEditorActivity extends AppCompatActivity
 			}
 			else if (mEtRoutineTitle.getText().length() == 0)
 			{
-				// The routine title is empty, don't do anything
+				// The routine name is empty, don't do anything
 				Toast.makeText(getBaseContext(),
 						getResources().getString(R.string.toast_empty_routine_title), Toast.LENGTH_SHORT).show();
 			}
@@ -135,7 +135,7 @@ public class RoutineEditorActivity extends AppCompatActivity
 	 */
 	private void setupContent()
 	{
-		// Get reference to the title view
+		// Get reference to the name view
 		mEtRoutineTitle = (EditText) findViewById(R.id.et_title);
 
 		// Setup the cycle count view
@@ -447,7 +447,7 @@ public class RoutineEditorActivity extends AppCompatActivity
 
 			cursor.moveToFirst();
 
-			// Set the title
+			// Set the name
 			mEtRoutineTitle.setText(cursor.getString(cursor.getColumnIndex(RoutineTable.TITLE)));
 
 			// Fetch the routine parameters

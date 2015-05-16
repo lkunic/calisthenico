@@ -62,7 +62,7 @@ public class ExerciseListAdapter extends ArrayAdapter<Exercise>
 
 			// Store the view references into the view holder to improve list performance
 			holder = new ViewHolder();
-			holder.txtExerciseTitle = (TextView) convertView.findViewById(R.id.txt_exercise_title);
+			holder.txtExerciseName = (TextView) convertView.findViewById(R.id.txt_exercise_name);
 			holder.txtReps = (TextView) convertView.findViewById(R.id.txt_reps);
 
 			// Add the view holder to the view as a tag
@@ -76,7 +76,7 @@ public class ExerciseListAdapter extends ArrayAdapter<Exercise>
 
 		// Setup the row values
 		Exercise exercise = getItem(position);
-		holder.txtExerciseTitle.setText(exercise.title);
+		holder.txtExerciseName.setText(exercise.name);
 		holder.txtReps.setText(exercise.isTimed ?
 			String.format("%ds", exercise.reps) :
 			String.valueOf(exercise.reps));
@@ -94,7 +94,7 @@ public class ExerciseListAdapter extends ArrayAdapter<Exercise>
 	 */
 	private class ViewHolder
 	{
-		public TextView txtExerciseTitle;
+		public TextView txtExerciseName;
 		public TextView txtReps;
 	}
 }

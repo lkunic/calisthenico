@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.lkunic.libs.apptoolbox.views.FontTextView
+		android:id="@+id/label_do"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:paddingBottom="@dimen/activity_outer_padding"
+		android:paddingTop="@dimen/activity_outer_padding"
+		android:text="@string/label_do"
+		android:textSize="@dimen/abc_text_size_large_material"
+		app:font="regular.ttf"/>
+
+	<com.lkunic.libs.apptoolbox.views.CountdownTimerView
+		android:id="@+id/exercise_countdown"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/label_do"
+		android:gravity="center"
+		android:textSize="@dimen/abc_text_size_display_4_material"
+		app:display_seconds_label="false"
+		app:font="bold.ttf"
+		app:initial_seconds="10"/>
+
+	<com.lkunic.libs.apptoolbox.views.FontTextView
+		android:id="@+id/label_seconds"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_below="@id/exercise_countdown"
+		android:paddingBottom="@dimen/activity_outer_padding"
+		android:text="@string/label_seconds"
+		android:textSize="@dimen/abc_text_size_large_material"
+		app:font="regular.ttf"/>
+
+	<com.lkunic.libs.apptoolbox.views.FontTextView
+		android:id="@+id/txt_exercise_name"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/label_seconds"
+		android:gravity="center"
+		android:paddingBottom="@dimen/activity_outer_padding"
+		android:paddingTop="@dimen/activity_outer_padding"
+		android:text="@string/placeholder"
+		android:textSize="@dimen/abc_text_size_display_1_material"
+		app:font="regular.ttf"/>
+
+	<Button
+		android:id="@+id/btn_start"
+		style="@style/button_large"
+		android:layout_width="wrap_content"
+		android:layout_height="@dimen/button_large_height"
+		android:layout_alignParentBottom="true"
+		android:layout_centerInParent="true"
+		android:text="@string/button_start"/>
+
+	<Button
+		android:id="@+id/btn_done"
+		style="@style/button_large"
+		android:layout_width="wrap_content"
+		android:layout_height="@dimen/button_large_height"
+		android:layout_alignParentBottom="true"
+		android:layout_centerInParent="true"
+		android:text="@string/button_done"
+		android:visibility="invisible"/>
+
+
+</RelativeLayout>
