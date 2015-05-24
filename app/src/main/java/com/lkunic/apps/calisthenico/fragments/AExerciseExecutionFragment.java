@@ -28,14 +28,6 @@ public abstract class AExerciseExecutionFragment extends Fragment
 		}
 	}
 
-	/*@Override
-	public void onDetach()
-	{
-		super.onDetach();
-
-		mListener = null;
-	}*/
-
 	protected void notifyExerciseExecutionCompleted()
 	{
 		if (mListener != null)
